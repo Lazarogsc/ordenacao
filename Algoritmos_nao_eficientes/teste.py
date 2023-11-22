@@ -7,15 +7,15 @@ from Algoritmos_nao_eficientes.selection_sort import selection_sort
 #tamanho das listas
 swap_probability = 0.7
 
-def algoritmos_nao_eficientes(size=100, show_listas=False):
+def algoritmos_nao_eficientes(size=100, show_prints=False):
     #listas geradas que não serão ordenadas
     lista_ordenada = generate_ordered_sequence(size)
     lista_inversamente_ordenada = generate_reverse_ordered_sequence(size)
     lista_quase_ordenada = generate_almost_ordered_sequence(size, swap_probability)
     lista_aleatoria = generate_random_sequence(size)
 
-    print(f"\r=========================================lista com tamanho: {size}=========================================")
-    if show_listas:
+    #print(f"\r=========================================lista com tamanho: {size}=========================================")
+    if show_prints:
         print(f"lista_ordenada: {lista_ordenada}")
         print(f"lista_inversamente_ordenada: {lista_inversamente_ordenada}")
         print(f"lista_quase_ordenada: {lista_quase_ordenada}")
@@ -70,29 +70,30 @@ def algoritmos_nao_eficientes(size=100, show_listas=False):
         fim = time.time()
         tempo_execucao = fim - inicio
         lista_tempo_selection.append(tempo_execucao)
-    
-    print(f'teste para a lista ordenada')
-    print(f'\nTempo de execução lista ja ordenada bubble: {lista_tempo_bubble[0]}')
-    print(f'\nTempo de execução lista ja ordenada insertion: {lista_tempo_insertion[0]}')
-    print(f'\nTempo de execução lista ja ordenada selection: {lista_tempo_selection[0]}')
-    
-    print(f'\nteste para a lista inversamente ordenada')
-    print(f'\nTempo de execução lista inversamente ordenada bubble: {lista_tempo_bubble[1]}')
-    print(f'\nTempo de execução lista inversamente ordenada insertion: {lista_tempo_insertion[1]}')
-    print(f'\nTempo de execução lista inversamente ordenada selection: {lista_tempo_selection[1]}')
-    
-    print(f'\nteste para a lista quase ordenada')
-    print(f'\nTempo de execução lista quase ordenada bubble: {lista_tempo_bubble[2]}')
-    print(f'\nTempo de execução lista quase ordenada insertion: {lista_tempo_insertion[2]}')
-    print(f'\nTempo de execução lista quase ordenada selection: {lista_tempo_selection[2]}')
-    
-    print(f'\nteste para a lista aleatoria')
-    print(f'\nTempo de execução lista aleatoria bubble: {lista_tempo_bubble[3]}')
-    print(f'\nTempo de execução lista aleatoria insertion: {lista_tempo_insertion[3]}')
-    print(f'\nTempo de execução lista aleatoria selection: {lista_tempo_selection[3]}')
+
+    if show_prints:
+        print(f'teste para a lista ordenada')
+        print(f'\nTempo de execução lista ja ordenada bubble: {lista_tempo_bubble[0]}')
+        print(f'\nTempo de execução lista ja ordenada insertion: {lista_tempo_insertion[0]}')
+        print(f'\nTempo de execução lista ja ordenada selection: {lista_tempo_selection[0]}')
+
+        print(f'\nteste para a lista inversamente ordenada')
+        print(f'\nTempo de execução lista inversamente ordenada bubble: {lista_tempo_bubble[1]}')
+        print(f'\nTempo de execução lista inversamente ordenada insertion: {lista_tempo_insertion[1]}')
+        print(f'\nTempo de execução lista inversamente ordenada selection: {lista_tempo_selection[1]}')
+
+        print(f'\nteste para a lista quase ordenada')
+        print(f'\nTempo de execução lista quase ordenada bubble: {lista_tempo_bubble[2]}')
+        print(f'\nTempo de execução lista quase ordenada insertion: {lista_tempo_insertion[2]}')
+        print(f'\nTempo de execução lista quase ordenada selection: {lista_tempo_selection[2]}')
+
+        print(f'\nteste para a lista aleatoria')
+        print(f'\nTempo de execução lista aleatoria bubble: {lista_tempo_bubble[3]}')
+        print(f'\nTempo de execução lista aleatoria insertion: {lista_tempo_insertion[3]}')
+        print(f'\nTempo de execução lista aleatoria selection: {lista_tempo_selection[3]}')
     
     res = {
-        'ordenada_buble': lista_tempo_bubble[0] if lista_tempo_bubble[0] > 0.0001 else 0.0001,
+        'ordenada_bubble': lista_tempo_bubble[0] if lista_tempo_bubble[0] > 0.0001 else 0.0001,
         'ordenada_insertion': lista_tempo_insertion[0] if lista_tempo_insertion[0] > 0.0001 else 0.0001,
         'ordenada_selection': lista_tempo_selection[0] if lista_tempo_selection[0] > 0.0001 else 0.0001,
         'inversamente_ordenada_bubble': lista_tempo_bubble[1] if lista_tempo_bubble[1] > 0.0001 else 0.0001,
