@@ -17,7 +17,7 @@ def algoritmos_nao_eficientes(size=100):
     print(f"lista_ordenada: {lista_ordenada}")
     print(f"lista_inversamente_ordenada: {lista_inversamente_ordenada}")
     print(f"lista_quase_ordenada: {lista_quase_ordenada}")
-    print(f"lista_aleatoria: {lista_aleatoria}")
+    print(f"lista_aleatoria: {lista_aleatoria}\n")
     
     #listas para o algoritmo bubble sort
     lista_ordenada_bubble = lista_ordenada.copy()
