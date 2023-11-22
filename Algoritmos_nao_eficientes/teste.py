@@ -1,23 +1,25 @@
 import time
-from .bubble_sort import bubble_sort
-from .gerador_lista import generate_almost_ordered_sequence, generate_ordered_sequence, generate_random_sequence, generate_reverse_ordered_sequence
-from .insertion_sort import insertion_sort
-from .selection_sort import selection_sort
+from Algoritmos_nao_eficientes.bubble_sort import bubble_sort
+from Algoritmos_nao_eficientes.gerador_lista import generate_almost_ordered_sequence, generate_ordered_sequence, generate_random_sequence, generate_reverse_ordered_sequence
+from Algoritmos_nao_eficientes.insertion_sort import insertion_sort
+from Algoritmos_nao_eficientes.selection_sort import selection_sort
 
 #tamanho das listas
 swap_probability = 0.7
 
-def algoritmos_nao_eficientes(size=100):
+def algoritmos_nao_eficientes(size=100, show_listas=False):
     #listas geradas que não serão ordenadas
     lista_ordenada = generate_ordered_sequence(size)
     lista_inversamente_ordenada = generate_reverse_ordered_sequence(size)
     lista_quase_ordenada = generate_almost_ordered_sequence(size, swap_probability)
     lista_aleatoria = generate_random_sequence(size)
 
-    print(f"lista_ordenada: {lista_ordenada}")
-    print(f"lista_inversamente_ordenada: {lista_inversamente_ordenada}")
-    print(f"lista_quase_ordenada: {lista_quase_ordenada}")
-    print(f"lista_aleatoria: {lista_aleatoria}\n")
+    print(f"\r=========================================lista com tamanho: {size}=========================================")
+    if show_listas:
+        print(f"lista_ordenada: {lista_ordenada}")
+        print(f"lista_inversamente_ordenada: {lista_inversamente_ordenada}")
+        print(f"lista_quase_ordenada: {lista_quase_ordenada}")
+        print(f"lista_aleatoria: {lista_aleatoria}\n")
     
     #listas para o algoritmo bubble sort
     lista_ordenada_bubble = lista_ordenada.copy()
@@ -89,17 +91,19 @@ def algoritmos_nao_eficientes(size=100):
     print(f'\nTempo de execução lista aleatoria insertion: {lista_tempo_insertion[3]}')
     print(f'\nTempo de execução lista aleatoria selection: {lista_tempo_selection[3]}')
     
-    return {
-        'lista ja ordenada bubble': lista_tempo_bubble[0] if lista_tempo_bubble[0] > 0.0001 else 0.0001,
-        'lista ja ordenada insertion': lista_tempo_insertion[0] if lista_tempo_insertion[0] > 0.0001 else 0.0001,
-        'lista ja ordenada selection': lista_tempo_selection[0] if lista_tempo_selection[0] > 0.0001 else 0.0001,
-        'lista inversamente ordenada bubble': lista_tempo_bubble[1] if lista_tempo_bubble[1] > 0.0001 else 0.0001,
-        'lista inversamente ordenada insertion': lista_tempo_insertion[1] if lista_tempo_insertion[1] > 0.0001 else 0.0001,
-        'lista inversamente ordenada selection': lista_tempo_selection[1] if lista_tempo_selection[1] > 0.0001 else 0.0001,
-        'lista quase ordenada bubble': lista_tempo_bubble[2] if lista_tempo_bubble[2] > 0.0001 else 0.0001,
-        'lista quase ordenada insertion': lista_tempo_insertion[2] if lista_tempo_insertion[2] > 0.0001 else 0.0001,
-        'lista quase ordenada selection': lista_tempo_selection[2] if lista_tempo_selection[2] > 0.0001 else 0.0001,
-        'lista aleatoria bubble': lista_tempo_bubble[3] if lista_tempo_bubble[3] > 0.0001 else 0.0001,
-        'lista aleatoria insertion': lista_tempo_insertion[3] if lista_tempo_insertion[3] > 0.0001 else 0.0001,
-        'lista aleatoria selection': lista_tempo_selection[3] if lista_tempo_selection[3] > 0.0001 else 0.0001,
+    res = {
+        'ordenada_buble': lista_tempo_bubble[0] if lista_tempo_bubble[0] > 0.0001 else 0.0001,
+        'ordenada_insertion': lista_tempo_insertion[0] if lista_tempo_insertion[0] > 0.0001 else 0.0001,
+        'ordenada_selection': lista_tempo_selection[0] if lista_tempo_selection[0] > 0.0001 else 0.0001,
+        'inversamente_ordenada_bubble': lista_tempo_bubble[1] if lista_tempo_bubble[1] > 0.0001 else 0.0001,
+        'inversamente_ordenada_insertion': lista_tempo_insertion[1] if lista_tempo_insertion[1] > 0.0001 else 0.0001,
+        'inversamente_ordenada_selection': lista_tempo_selection[1] if lista_tempo_selection[1] > 0.0001 else 0.0001,
+        'quase_ordenada_bubble': lista_tempo_bubble[2] if lista_tempo_bubble[2] > 0.0001 else 0.0001,
+        'quase_ordenada_insertion': lista_tempo_insertion[2] if lista_tempo_insertion[2] > 0.0001 else 0.0001,
+        'quase_ordenada_selection': lista_tempo_selection[2] if lista_tempo_selection[2] > 0.0001 else 0.0001,
+        'aleatoria_bubble': lista_tempo_bubble[3] if lista_tempo_bubble[3] > 0.0001 else 0.0001,
+        'aleatoria_insertion': lista_tempo_insertion[3] if lista_tempo_insertion[3] > 0.0001 else 0.0001,
+        'aleatoria_selection': lista_tempo_selection[3] if lista_tempo_selection[3] > 0.0001 else 0.0001,
     }
+
+    return res
